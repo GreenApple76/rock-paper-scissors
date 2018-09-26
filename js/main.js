@@ -3,7 +3,14 @@ $(document).ready(function () {
     // animate user and computer hands doing
     // throw down
     $('.choices').on('click', function (e) {
+        // exit if user clicked the div container instead
+        // of the rock/paper/scissors items within the container
+        if (e.target.className === 'choices') {
+            return;
+        }
 
+        // reset status
+        $('.status').html('');
         // reset gestures to fists for pre-game setup
         $('.user').html('<img src="img/rock.jpg" alt="Rock" class="user-choice">');
         $('.computer').html('<img src="img/rock-computer.jpg" alt="Rock - Computer" class="computer-choice">');
@@ -40,6 +47,46 @@ $(document).ready(function () {
                                 '" alt="'+selections[randSelect]+' - computer"'+
                                 ' class="computer-choice">');
         }, 1100);
+
+        // check for winner
+        setTimeout(function() {
+            let winner = null;
+            let tied = null;
+            if (userSelection === 'rock') {
+                if (selections[randSelect] === 'rock') {
+                    tied = true;
+                } else if (selections[randSelect] === 'paper') {
+                    winner = false;
+                } else if (selections[randSelect] === 'scissors') {
+                    winner = true;
+                }
+            } else if (userSelection === 'paper') {
+                if (selections[randSelect] === 'rock') {
+                    winner = true;
+                } else if (selections[randSelect] === 'paper') {
+                    tied = true;
+                } else if (selections[randSelect] === 'scissors') {
+                    winner = false;
+                }
+            } else if (userSelection === 'scissors') {
+                if (selections[randSelect] === 'rock') {
+                    winner = false;
+                } else if (selections[randSelect] === 'paper') {
+                    winner = true;
+                } else if (selections[randSelect] === 'scissors') {
+                    tied = true;
+                }
+            }
+
+            // update status of page with win, lose, or draw
+            if (winner) {
+                $('.status').html('You Win!');
+            } else if (tied) {
+                $('.status').html('It\'s a draw');
+            } else {
+                $('.status').html('You Lose');
+            }
+        }, 1200)
     });
 
 });

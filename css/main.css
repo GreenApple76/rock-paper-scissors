@@ -36,6 +36,14 @@ h1 {
     margin-bottom: 2rem;
 }
 
+h2 {
+    color: steelblue;
+    font-family: 'Chicle', cursive;
+    font-size: 2.4rem;
+    letter-spacing: 0.125rem;
+    margin-bottom: 1rem;
+}
+
 .choices,
 .results {
     max-width: 80%;
@@ -73,4 +81,29 @@ h1 {
     width: 33.333%;
     max-width: 50%;
     height: auto;
+}
+
+.status {
+    /* do not show win/lose/draw status until game is completed     */
+    visibility: hidden;
+}
+
+.scores {
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    letter-spacing: normal;
+}
+.score-headline {
+    width: 100%;
+    margin-top: 5rem;
+}
+
+.user-score {
+    flex-grow: 1;
+}
+
+.computer-score {
+    flex-grow: 1;
 }

@@ -1,4 +1,7 @@
 $(document).ready(function () {
+    let userScore = 0;
+    let computerScore = 0;
+
     // on clicking of paper/rock/scissors hand
     // animate user and computer hands doing
     // throw down
@@ -10,7 +13,7 @@ $(document).ready(function () {
         }
 
         // reset status
-        $('.status').html('');
+        $('.status').css('visibility', 'hidden');
         // reset gestures to fists for pre-game setup
         $('.user').html('<img src="img/rock.jpg" alt="Rock" class="user-choice">');
         $('.computer').html('<img src="img/rock-computer.jpg" alt="Rock - Computer" class="computer-choice">');
@@ -57,22 +60,28 @@ $(document).ready(function () {
                     tied = true;
                 } else if (selections[randSelect] === 'paper') {
                     winner = false;
+                    computerScore++;
                 } else if (selections[randSelect] === 'scissors') {
                     winner = true;
+                    userScore++;
                 }
             } else if (userSelection === 'paper') {
                 if (selections[randSelect] === 'rock') {
                     winner = true;
+                    userScore++;
                 } else if (selections[randSelect] === 'paper') {
                     tied = true;
                 } else if (selections[randSelect] === 'scissors') {
                     winner = false;
+                    computerScore++;
                 }
             } else if (userSelection === 'scissors') {
                 if (selections[randSelect] === 'rock') {
                     winner = false;
+                    computerScore++;
                 } else if (selections[randSelect] === 'paper') {
                     winner = true;
+                    userScore++;
                 } else if (selections[randSelect] === 'scissors') {
                     tied = true;
                 }
@@ -86,6 +95,9 @@ $(document).ready(function () {
             } else {
                 $('.status').html('You Lose');
             }
+            $('.status').css('visibility', 'visible');
+            $('.user-points').text(userScore);
+            $('.computer-points').text(computerScore);
         }, 1200)
     });
 

@@ -101,4 +101,10 @@ $(document).ready(function () {
         }, 1200)
     });
 
+    $('button').on('click', function() {
+        userScore = 0;
+        computerScore = 0;
+        $('.user-points').text(userScore);
+        $('.computer-points').text(computerScore);
+    });
 });

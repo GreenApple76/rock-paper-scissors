@@ -1,6 +1,6 @@
 $(document).ready(function () {
-    let userScore = 0;
-    let computerScore = 0;
+    var userScore = 0;
+    var computerScore = 0;
 
     // on clicking of paper/rock/scissors hand
     // animate user and computer hands doing

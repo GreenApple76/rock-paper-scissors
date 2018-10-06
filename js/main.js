@@ -31,7 +31,7 @@ $(document).ready(function () {
             $('.computer-choice').removeClass('animate-computer');
         }, 1000)
 
-        let userSelection = e.target.className;
+        var userSelection = e.target.className;
         // swap out pre-game fist with
         // user selection
         setTimeout(function() {
@@ -43,8 +43,8 @@ $(document).ready(function () {
 
         // swap out computer's pre-game fist with
         // random selection
-        let selections = ['rock', 'paper', 'scissors'];
-        let randSelect = Math.floor(Math.random()*3);
+        var selections = ['rock', 'paper', 'scissors'];
+        var randSelect = Math.floor(Math.random()*3);
         setTimeout(function() {
             $('.computer').html('<img src="img/' + selections[randSelect] + '-computer.jpg' +
                                 '" alt="'+selections[randSelect]+' - computer"'+
@@ -53,8 +53,8 @@ $(document).ready(function () {
 
         // check for winner
         setTimeout(function() {
-            let winner = null;
-            let tied = null;
+            var winner = null;
+            var tied = null;
             if (userSelection === 'rock') {
                 if (selections[randSelect] === 'rock') {
                     tied = true;
